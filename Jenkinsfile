@@ -2,7 +2,7 @@ project = "conan-logical-geometry"
 
 conan_remote = "ess-dmsc-local"
 conan_user = "ess-dmsc"
-conan_pkg_channel = "testing"
+conan_pkg_channel = "stable"
 
 // This is a header-only package, therefore we only build it on centos7.
 images = [
