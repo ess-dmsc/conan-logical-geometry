@@ -13,4 +13,4 @@ class LogicalgeometryConan(ConanFile):
         self.run("cd logical-geometry && git checkout 09097f2bbb8b9adcd216d1048907535d80d9d478")
 
     def package(self):
-        self.copy("ESSGeometry.h", dst="include", src="logical-geometry/cpp/src")
+        self.copy("ESSGeometry.h", dst="include/logical_geometry", src="logical-geometry/cpp/src")

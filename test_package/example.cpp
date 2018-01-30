@@ -1,4 +1,4 @@
-#include "ESSGeometry.h"
+#include <logical_geometry/ESSGeometry.h>
 #include <iostream>
 
 int main() {
