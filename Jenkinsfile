@@ -22,10 +22,36 @@ builders = packageBuilder.createPackageBuilders { container ->
   packageBuilder.addConfiguration(container)
 }
 
+def get_macos_pipeline() {
+  return {
+    node('macos') {
+      cleanWs()
+      dir("${project}") {
+        stage("macOS: Checkout") {
+          checkout scm
+        }  // stage
+
+        stage("macOS: Package") {
+          sh "conan create . ${conan_user}/${conan_pkg_channel} \
+            --build=outdated"
+
+          sh "conan info ."
+        }  // stage
+      }  // dir
+    }  // node
+  }  // return
+}  // def
+
+
+
 node {
   checkout scm
-  parallel builders
 
-  // Delete workspace when build is done.
-  cleanWs()
+  builders['macOS'] = get_macos_pipeline()
+
+  try {
+    parallel builders
+  } finally {
+    cleanWs()
+  }
 }
