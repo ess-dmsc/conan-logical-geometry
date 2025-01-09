@@ -63,4 +63,4 @@ container_build_node:
     # Automatically trigger when the merge request is merged
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master"'
     # Allow manual execution in other scenarios
-    - when: manual
+  when: manual
